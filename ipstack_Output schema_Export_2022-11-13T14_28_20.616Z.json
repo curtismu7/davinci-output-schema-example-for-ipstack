@@ -1,0 +1,178 @@
+{
+  "companyId": "9fb3dfc8-e3ef-4515-8f8e-29a5baf62f91",
+  "authTokenExpireIds": [],
+  "connectorIds": [
+    "httpConnector"
+  ],
+  "createdDate": 1668349691926,
+  "currentVersion": 152,
+  "customerId": "38f1e64332a64e2263c5953d52e846fb",
+  "deployedDate": 1668349692908,
+  "description": "",
+  "flowStatus": "enabled",
+  "name": "ipstack Output schema",
+  "publishedVersion": 152,
+  "settings": {
+    "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
+    "intermediateLoadingScreenCSS": "",
+    "intermediateLoadingScreenHTML": "",
+    "useCustomCSS": true,
+    "cssLinks": [
+      "https://assets.pingone.com/ux/end-user/1.7.0/end-user.css"
+    ],
+    "css": "body, .page {\n  background-color: #ededed !important;\n}\n\n.buttonLink {\n  background: none !important;\n  border: none;\n  cursor: pointer;\n  color: #2996cc;\n  font-size: 15px;\n}\n",
+    "logLevel": 3
+  },
+  "updatedDate": 1668349692908,
+  "flowId": "269432e53678b00ba91ce8ab05cf6149",
+  "versionId": 152,
+  "graphData": {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "1pe9i1ise7",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"http.svg\",\n        \"url\": \"ip\",\n        \"data\": \"{{local.9zy7ypzsdi.payload.output.rawResponse.body.ip}}\",\n        \"tooltip\": \"{{local.9zy7ypzsdi.payload.output.rawResponse.body.ip}}\",\n        \"children\": [\n          {\n            \"text\": \"ip\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1387,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "9zy7ypzsdi",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "makeRestApiCall",
+            "type": "trigger",
+            "properties": {
+              "url": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"https://api.ipstack.com/134.201.250.155?access_key=15ccfed4a9747fa3615a4c765ee08f3c\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "outputSchema": {
+                "value": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"ip\": {\n      \"type\": \"string\"\n    },\n    \"type\": {\n      \"type\": \"string\"\n    },\n    \"continent_code\": {\n      \"type\": \"string\"\n    },\n    \"continent_name\": {\n      \"type\": \"string\"\n    },\n    \"country_code\": {\n      \"type\": \"string\"\n    },\n    \"country_name\": {\n      \"type\": \"string\"\n    },\n    \"region_code\": {\n      \"type\": \"string\"\n    },\n    \"region_name\": {\n      \"type\": \"string\"\n    },\n    \"city\": {\n      \"type\": \"string\"\n    },\n    \"zip\": {\n      \"type\": \"string\"\n    },\n    \"latitude\": {\n      \"type\": \"number\"\n    },\n    \"longitude\": {\n      \"type\": \"number\"\n    },\n    \"location\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"geoname_id\": {\n          \"type\": \"integer\"\n        },\n        \"capital\": {\n          \"type\": \"string\"\n        },\n        \"languages\": {\n          \"type\": \"array\",\n          \"items\": [\n            {\n              \"type\": \"object\",\n              \"properties\": {\n                \"code\": {\n                  \"type\": \"string\"\n                },\n                \"name\": {\n                  \"type\": \"string\"\n                },\n                \"native\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"required\": [\n                \"code\",\n                \"name\",\n                \"native\"\n              ]\n            }\n          ]\n        },\n        \"country_flag\": {\n          \"type\": \"string\"\n        },\n        \"country_flag_emoji\": {\n          \"type\": \"string\"\n        },\n        \"country_flag_emoji_unicode\": {\n          \"type\": \"string\"\n        },\n        \"calling_code\": {\n          \"type\": \"string\"\n        },\n        \"is_eu\": {\n          \"type\": \"boolean\"\n        }\n      },\n      \"required\": [\n        \"geoname_id\",\n        \"capital\",\n        \"languages\",\n        \"country_flag\",\n        \"country_flag_emoji\",\n        \"country_flag_emoji_unicode\",\n        \"calling_code\",\n        \"is_eu\"\n      ]\n    },\n    \"time_zone\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"id\": {\n          \"type\": \"string\"\n        },\n        \"current_time\": {\n          \"type\": \"string\"\n        },\n        \"gmt_offset\": {\n          \"type\": \"integer\"\n        },\n        \"code\": {\n          \"type\": \"string\"\n        },\n        \"is_daylight_saving\": {\n          \"type\": \"boolean\"\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"current_time\",\n        \"gmt_offset\",\n        \"code\",\n        \"is_daylight_saving\"\n      ]\n    },\n    \"currency\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"code\": {\n          \"type\": \"string\"\n        },\n        \"name\": {\n          \"type\": \"string\"\n        },\n        \"plural\": {\n          \"type\": \"string\"\n        },\n        \"symbol\": {\n          \"type\": \"string\"\n        },\n        \"symbol_native\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"code\",\n        \"name\",\n        \"plural\",\n        \"symbol\",\n        \"symbol_native\"\n      ]\n    },\n    \"connection\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"asn\": {\n          \"type\": \"integer\"\n        },\n        \"isp\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"asn\",\n        \"isp\"\n      ]\n    }\n  },\n  \"required\": [\n    \"ip\",\n    \"type\",\n    \"continent_code\",\n    \"continent_name\",\n    \"country_code\",\n    \"country_name\",\n    \"region_code\",\n    \"region_name\",\n    \"city\",\n    \"zip\",\n    \"latitude\",\n    \"longitude\",\n    \"location\",\n    \"time_zone\",\n    \"currency\",\n    \"connection\"\n  ]\n}"
+              },
+              "headers": {
+                "value": []
+              }
+            }
+          },
+          "position": {
+            "x": 1057,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "o2tze4a05n",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1207,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "ahxoqhm11e",
+            "source": "o2tze4a05n",
+            "target": "1pe9i1ise7"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "qtsm4ws3bd",
+            "source": "9zy7ypzsdi",
+            "target": "o2tze4a05n"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        }
+      ]
+    },
+    "data": {},
+    "zoomingEnabled": true,
+    "userZoomingEnabled": true,
+    "zoom": 1,
+    "minZoom": 1e-50,
+    "maxZoom": 1e+50,
+    "panningEnabled": true,
+    "userPanningEnabled": true,
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "boxSelectionEnabled": true,
+    "renderer": {
+      "name": "null"
+    }
+  },
+  "flowColor": "#AFD5FF",
+  "savedDate": 1668349691846,
+  "variables": []
+}
